@@ -12,9 +12,11 @@ app.use(cookieParser());
 
 const {connectDb} = require('./config/db')
 const userRouter = require("./routes/userRoutes")
+const captainRouter = require('./routes/capatainRoutes')
 connectDb()
 
 
 app.use("/users",userRouter)
+app.use('/captains',captainRouter)
 
 module.exports = app
