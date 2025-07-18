@@ -1,6 +1,8 @@
-import React,{useState} from 'react'
-import captain from '../assets/captain.png';
-import { Link } from 'react-router-dom';
+import React,{useContext, useState} from 'react'
+import captainpic from '../assets/captain.png';
+import { Link,useNavigate } from 'react-router-dom';
+import { CaptainDataContext } from '../context/CaptainContext';
+import axios from 'axios'
 
 function CaptainSignUp() {
    const [firstname,setFirstname] = useState('')
@@ -8,23 +10,32 @@ function CaptainSignUp() {
       const [email,setEmail] = useState('')
       const [password,setPassword] = useState('')
       const [capatinData,setCaptainData] = useState({})
+      const navigate = useNavigate()
+      const {captain,setCaptain} = useContext(CaptainDataContext)
 
-  const submitHandler = (e)=>{
+  const submitHandler = async(e)=>{
     e.preventDefault()
-    setCaptainData({
+    const newCaptain={
       fullname:{
         firstname,
         lastname
       },
       email,
       password
-    })
-  }
+    }
+    const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/captains/register`,newCaptain)
+    const data = response.data
+    console.log(data)
+    setCaptain(data.captain)
+    localStorage.setItem('token',data.token)
+    }
+    
+  
 
   return (
     <div className='p-7 h-screen flex flex-col justify-between'>
            <div>
-           <img className='w-16 mb-10' src={captain}/>
+           <img className='w-16 mb-10' src={captainpic}/>
           
           <form onSubmit={submitHandler}>
             
@@ -65,7 +76,7 @@ function CaptainSignUp() {
              />
             <button
             className='bg-[#111] text-white font-semibold mb-5 rounded px-4 py-2 w-full text-lg placeholder:text-base'
-            >Login</button>
+            >Create Account</button>
             
           </form>
           <p className='text-center'>Already have an Account? <Link to='/captain-login' className='text-blue-600'>Login Here</Link></p>
