@@ -1,20 +1,34 @@
-import React, { useState }  from 'react'
-import captain from '../assets/captain.png';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState }  from 'react'
+import captainpic from '../assets/captain.png';
+import { Link,useNavigate } from 'react-router-dom';
+import { CaptainDataContext } from '../context/CaptainContext';
+import axios from 'axios'
 
 function CaptainLogin() {
 
 const [email,setEmail] = useState('')
   const [password,setPassword] = useState('')
-  const [captainData,setCaptainData] = useState({})
+  const {captain,setCaptain} = useContext(CaptainDataContext)
+  const navigate = useNavigate()
 
-  const submitHandler = (e)=>{
+  const submitHandler = async(e)=>{
     e.preventDefault()
-    setCaptainData({
+    const CaptainData = {
       email,
       password
-    })
-
+    }
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_BASE_URL}/captains/login`,
+        CaptainData
+      );
+      const data = response.data;         
+      setCaptain(data.captain);
+      localStorage.setItem('token', data.token);
+      navigate('/captain-home'); 
+    } catch (err) {
+      console.error('Error creating account:', err);
+    }
     setEmail('')
     setPassword('')
   }
@@ -22,7 +36,7 @@ const [email,setEmail] = useState('')
   return (
     <div className='p-7 h-screen flex flex-col justify-between'>
        <div>
-       <img className='w-16 mb-10' src={captain}/>
+       <img className='w-16 mb-10' src={captainpic}/>
       
       <form onSubmit={submitHandler}>
         
