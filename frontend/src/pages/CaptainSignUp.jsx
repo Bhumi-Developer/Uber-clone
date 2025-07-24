@@ -125,14 +125,20 @@ function CaptainSignUp() {
     className="bg-[#eeeeee] rounded px-4 py-2 w-1/2 text-lg placeholder:text-base"
     placeholder="Plate Number"
   />
-  <input
-    required
-    value={vehicleType}
-    onChange={(e) => setVehicleType(e.target.value)}
-    type="text"
-    className="bg-[#eeeeee] rounded px-4 py-2 w-1/2 text-lg placeholder:text-base"
-    placeholder="Vehicle Type"
-  />
+  <select
+  required
+  value={vehicleType}
+  onChange={(e) => setVehicleType(e.target.value)}
+  className="bg-[#eeeeee] rounded px-4 py-2 w-1/2 text-base"
+>
+  <option value="" disabled className='m-6'>
+    Select Vehicle Type
+  </option>
+  <option value="car">Car</option>
+  <option value="bike">Bike</option>
+  <option value="auto">Auto</option>
+</select>
+
 </div>
           <button className="bg-[#111] text-white font-semibold mb-2 rounded px-4 py-2 w-full text-lg">
             Create Account
