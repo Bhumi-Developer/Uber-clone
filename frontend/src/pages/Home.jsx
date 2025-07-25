@@ -5,11 +5,22 @@ import {useGSAP} from '@gsap/react'
 import gsap from 'gsap'
 import { IoIosArrowDown } from "react-icons/io";
 import LocationSearchPanel from '../components/LocationSearchPanel';
+import uber_car from '../assets/uber_car.png';
+import { IoPerson } from "react-icons/io5";
+import uber_bike from '../assets/uber_bike.webp'
+import uber_auto from '../assets/uber_Auto.webp'
+import VehiclePanel from '../components/VehiclePanel';
+import ConfirmRide from '../components/ConfirmRide';
+import LookingForDriver from '../components/LookingForDriver';
 
 function Home() {
   const [pickup,setPickup] = useState('')
   const [destination,setDestination] = useState('')
   const [panelOpen,setPanelOpen] = useState(false)
+  const [vehiclePanel,setVehiclePanel] = useState(false)
+  const [confirmRidePanel,setConfirmRidePanel] = useState(false)
+  const confirmRidePanelRef = useRef(null)
+  const vehiclePanelRef = useRef(null)
   const panelRef = useRef(null)
   const panelCloseRef = useRef(null)
 
@@ -39,8 +50,32 @@ function Home() {
    }
   },[panelOpen])
 
+  useGSAP(function(){
+    if(vehiclePanel){
+      gsap.to(vehiclePanelRef.current,{
+        transform: 'translateY(0)'
+      })
+    }else{
+      gsap.to(vehiclePanelRef.current,{
+        transform:'translateY(100%)'
+      })
+    }
+  },[vehiclePanel])
+
+  useGSAP(function(){
+    if(confirmRidePanel){
+      gsap.to(confirmRidePanelRef.current,{
+        transform: 'translateY(0)'
+      })
+    }else{
+      gsap.to(confirmRidePanelRef.current,{
+        transform:'translateY(100%)'
+      })
+    }
+  },[confirmRidePanel])
+
   return (
-    <div className='h-screen relative'>
+    <div className='h-screen relative overflow-hidden'>
       <img className='w-16 absolute left-5 top-5' src={uber_logo}/>
       <div className='h-screen w-screen'>
         <img className='h-full w-full object-cover' src={uber_map}/>
@@ -59,8 +94,17 @@ function Home() {
         </form>
         </div>
         <div ref={panelRef} className='h-0 bg-white'>
-              <LocationSearchPanel />
+              <LocationSearchPanel vehiclePanel = {vehiclePanel} setVehiclePanel={setVehiclePanel} setPanelOpen={setPanelOpen}/>
         </div>
+      </div>
+      <div ref={vehiclePanelRef} className='fixed w-full z-10 bottom-0 bg-white px-3 py-10 pt-12 translate-y-full'>
+        <VehiclePanel setVehiclePanel={setVehiclePanel} setConfirmRidePanel={setConfirmRidePanel}/>
+      </div>
+      <div ref={confirmRidePanelRef} className='fixed w-full z-10 bottom-0 bg-white px-3 py-6 pt-12 translate-y-full'>
+        <ConfirmRide />
+      </div>
+      <div className='fixed w-full z-10 bottom-0 bg-white px-3 py-6 pt-12 translate-y-full'>
+        <LookingForDriver />
       </div>
     </div>
   )
