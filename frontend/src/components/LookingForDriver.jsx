@@ -1,9 +1,14 @@
 import React from 'react'
+import { IoIosArrowDown } from "react-icons/io";
+import uber_car from '../assets/uber_car.png';
+import { MdEditLocationAlt } from "react-icons/md";
+import { MdPayments } from "react-icons/md";
+import { IoLocationSharp } from "react-icons/io5";
 
-function LookingForDriver() {
+function LookingForDriver(props) {
    return (
       <div>
-             <h5 className='p-1 flex justify-center w-[93%] absolute top-0 text-3xl text-gray-200' onClick={()=>{props.setVehiclePanel(false)}}><IoIosArrowDown /></h5>
+             <h5 className='p-1 flex justify-center w-[93%] absolute top-0 text-3xl text-gray-200' onClick={()=>{props.setVehicleFound(false)}}><IoIosArrowDown /></h5>
                   <h3 className='text-2xl font-semibold mb-5' >Looking for a Driver</h3>
                   <div className='flex justify-between flex-col items-center gap-1'>
                         <img className='h-25' src={uber_car} />

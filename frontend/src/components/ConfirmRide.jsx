@@ -5,10 +5,10 @@ import { IoLocationSharp } from "react-icons/io5";
 import { MdEditLocationAlt } from "react-icons/md";
 import { MdPayments } from "react-icons/md";
 
-function ConfirmRide() {
+function ConfirmRide(props) {
   return (
     <div>
-           <h5 className='p-1 flex justify-center w-[93%] absolute top-0 text-3xl text-gray-200' onClick={()=>{props.setVehiclePanel(false)}}><IoIosArrowDown /></h5>
+           <h5 className='p-1 flex justify-center w-[93%] absolute top-0 text-3xl text-gray-200' onClick={()=>{props.setConfirmRidePanel(false)}}><IoIosArrowDown /></h5>
                 <h3 className='text-2xl font-semibold mb-5' >Confirm your Ride</h3>
                 <div className='flex justify-between flex-col items-center gap-1'>
                       <img className='h-25' src={uber_car} />
@@ -45,7 +45,9 @@ function ConfirmRide() {
                         </div>
                         </div>
                     </div>
-                    <button className='w-full mt-5 bg-green-600 text-white font-semibold p-2 rounded-lg'>Confirm</button>
+                    <button className='w-full mt-5 bg-green-600 text-white font-semibold p-2 rounded-lg' onClick={()=>{props.setVehicleFound(true),
+                        props.setConfirmRidePanel(false)
+                    }}>Confirm</button>
                 </div>
 
     </div>
