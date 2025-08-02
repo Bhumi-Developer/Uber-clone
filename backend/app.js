@@ -14,11 +14,13 @@ const {connectDb} = require('./config/db')
 const userRouter = require("./routes/userRoutes")
 const captainRouter = require('./routes/capatainRoutes')
 // const mapRoutes = require('./routes/mapRoutes')
+const rideRoutes = require('./routes/rideRoutes')
 connectDb()
 
 
 app.use("/users",userRouter)
 app.use('/captains',captainRouter)
 // app.use('/maps',mapRoutes)
+app.use('/rides',rideRoutes);
 
 module.exports = app
