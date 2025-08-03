@@ -13,6 +13,7 @@ function VehiclePanel(props) {
         <h3 className='text-2xl font-semibold mb-5' >Choose a vehicle</h3>
         <div onClick={()=>{
             props.setConfirmRidePanel(true)
+            props.setVehicleType('car')
         }} className='flex border-2 border-gray-200 active:border-black rounded-xl mb-2  w-full items-center justify-between  p-3'>
             <img className='h-12' src={uber_car} />
             <div className=' w-1/2 ml-2'>
@@ -20,10 +21,13 @@ function VehiclePanel(props) {
               <h5 className='font-medium text-sm'>2 mins away</h5>
               <p className='font-normal text-xs text-gray-600'>Affordable,compact rides</p>
             </div>
-            <h2 className='text-xl font-semibold'>Rs.193.20</h2>
+            <h2 className='text-xl font-semibold'>
+              {/* Rs.{props.fare.car} */}
+             Rs.198.20 </h2>
         </div>
         <div onClick={()=>{
             props.setConfirmRidePanel(true)
+            props.setVehicleType('bike')
         }} className='flex border-2 border-gray-200 active:border-black rounded-xl  w-full items-center justify-between  p-3 mb-2'>
             <img className='h-12' src={uber_bike} />
             <div className=' w-1/2 ml-2'>
@@ -31,10 +35,13 @@ function VehiclePanel(props) {
               <h5 className='font-medium text-sm'>3 mins away</h5>
               <p className='font-normal text-xs text-gray-600'>Affordable Bike rides</p>
             </div>
-            <h2 className='text-xl font-semibold'>Rs.65</h2>
+            <h2 className='text-xl font-semibold'>
+              {/* Rs.{props.fare.bike} */}
+              Rs.110</h2>
         </div>
         <div onClick={()=>{
             props.setConfirmRidePanel(true)
+            props.setVehicleType('auto')
         }} className='flex border-2 border-gray-200 active:border-black rounded-xl  w-full items-center justify-between  p-3 mb-2'>
             <img className='h-12' src={uber_auto} />
             <div className=' w-1/2 ml-2'>
@@ -42,7 +49,9 @@ function VehiclePanel(props) {
               <h5 className='font-medium text-sm'>3 mins away</h5>
               <p className='font-normal text-xs text-gray-600'>Affordable Auto rides</p>
             </div>
-            <h2 className='text-xl font-semibold'>Rs.118</h2>
+            <h2 className='text-xl font-semibold'>
+              {/* Rs.{props.fare.auto} */}
+              Rs.68.11</h2>
         </div>
     </div>
   )

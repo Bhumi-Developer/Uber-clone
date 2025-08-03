@@ -21,7 +21,9 @@ function RidePopUp(props) {
       <div className="flex items-center justify-between mt-4 p-3 bg-yellow-500 rounded-xl ">
             <div className="flex items-center gap-3 ">
                 <img className="h-12 rounded-full object-cover w-10" src={customer}/>
-                <h2 className="text-lg font-medium">Pranav</h2>
+                <h2 className="text-lg font-medium">Pranav
+                  {/* {props.ride?.user.fullname.firstname + " " + props.ride?.user.fullname.lastname} */}
+                </h2>
             </div>
             <h5>2.2 KM</h5>
       </div>
@@ -34,6 +36,7 @@ function RidePopUp(props) {
               <h3 className="text-lg font-medium">562/11-A</h3>
               <p className="text-sm -mt-1  text-gray-600">
                 Kankariya Talab,Ahmedabad
+                {/* {props.ride.pickup} */}
               </p>
             </div>
           </div>
@@ -44,6 +47,7 @@ function RidePopUp(props) {
                 <h3 className="text-lg font-medium">562/11-A</h3>
                 <p className="text-sm -mt-1  text-gray-600">
                   Kankariya Talab,Ahmedabad
+                  {/* {props.ride.destination} */}
                 </p>
               </div>
             </div>
@@ -52,7 +56,9 @@ function RidePopUp(props) {
             <div className="flex items-center gap-5 p-3">
               <MdPayments />
               <div>
-                <h3 className="text-lg font-medium">Rs.193.20</h3>
+                <h3 className="text-lg font-medium">Rs.193.20
+                  {/* {props.ride.fare} */}
+                </h3>
                 <p className="text-sm -mt-1  text-gray-600">Cash Cash</p>
               </div>
             </div>
@@ -62,7 +68,8 @@ function RidePopUp(props) {
          <button
           className=" mt-1 bg-green-600 text-white font-semibold p-3 px-10 rounded-lg"
           onClick={() => {
-           props.setConfirmRidePopupPanel(true)
+           props.setConfirmRidePopupPanel(true),
+           props.confirmRide()
           }}
         >
           Accept

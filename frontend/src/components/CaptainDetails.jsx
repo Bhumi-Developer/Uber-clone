@@ -1,16 +1,20 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import { GiBackwardTime } from "react-icons/gi";
 import { MdSpeed } from "react-icons/md";
 import { TbNotes } from "react-icons/tb";
 import profile from '../assets/profile.jpeg'
+import { CaptainDataContext } from '../context/CaptainContext';
 
 function CaptainDetails() {
+
+  const {captain} = useContext(CaptainDataContext)
+
   return (
     <div>
        <div className="flex items-center justify-between">
           <div className="flex items-center justify-start gap-3">
             <img className="h-10 w-10 rounded-full object-cover" src={profile} />
-            <h4 className="text-lg font-medium">Ramu Singh</h4>
+            <h4 className="text-lg font-medium capitalize">{captain.fullname.firstname + " " + captain.fullname.lastname}</h4>
           </div>
           <div>
             <h4 className="text-xl font-semibold">Rs.295.20</h4>

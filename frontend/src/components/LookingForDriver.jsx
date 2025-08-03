@@ -19,6 +19,7 @@ function LookingForDriver(props) {
                               <h3 className='text-lg font-medium'>562/11-A</h3>
                               <p className='text-sm -mt-1  text-gray-600'>
                                   Kankariya Talab,Ahmedabad
+                                  {/* {props.pickup} */}
                               </p>
                           </div>
                           </div>
@@ -29,6 +30,7 @@ function LookingForDriver(props) {
                               <h3 className='text-lg font-medium'>562/11-A</h3>
                               <p className='text-sm -mt-1  text-gray-600'>
                                   Kankariya Talab,Ahmedabad
+                                  {/* {props.destination} */}
                               </p>
                           </div>
                           </div>
@@ -37,7 +39,9 @@ function LookingForDriver(props) {
                           <div className='flex items-center gap-5 p-3'>
                           <MdPayments />
                           <div>
-                              <h3 className='text-lg font-medium'>Rs.193.20</h3>
+                              <h3 className='text-lg font-medium'>Rs.193.20
+                                {/* {props.fare[vehicleType]} */}
+                              </h3>
                               <p className='text-sm -mt-1  text-gray-600'>
                                   Cash Cash
                               </p>

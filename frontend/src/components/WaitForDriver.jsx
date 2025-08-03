@@ -14,9 +14,16 @@ function WaitForDriver(props) {
                   <div className='flex items-center justify-between'>
                     <img className='h-20' src={uber_car}/>
                    <div className='text-right'>
-                     <h2 className='text-lg font-medium'>Ramu Singh</h2>
-                     <h4 className='text-xl font-semibold -mt-1 -mb-1'>MP04 AB 1234</h4>
+                     <h2 className='text-lg font-medium'>Ramu Singh
+                        {/* {props.ride?.fullname.firstname + " " + props.ride?.fullname.latname} */}
+                     </h2>
+                     <h4 className='text-xl font-semibold -mt-1 -mb-1'>MP04 AB 1234
+                     {/* {props.ride?.captain.vehicle.plate} */}
+                     </h4>
                      <p className='text-sm txt-gray-600'>Maruti Suzuki Alto</p>
+                     <h1 className='text-lg font-semibold'>1234
+                        {/* {props.ride?.otp} */}
+                        </h1>
                    </div>
                   </div>
                    <div className='flex justify-between flex-col items-center gap-1'>
@@ -28,6 +35,7 @@ function WaitForDriver(props) {
                                <h3 className='text-lg font-medium'>562/11-A</h3>
                                <p className='text-sm -mt-1  text-gray-600'>
                                    Kankariya Talab,Ahmedabad
+                                   {/* {props.ride?.pickup} */}
                                </p>
                            </div>
                            </div>
@@ -38,6 +46,7 @@ function WaitForDriver(props) {
                                <h3 className='text-lg font-medium'>562/11-A</h3>
                                <p className='text-sm -mt-1  text-gray-600'>
                                    Kankariya Talab,Ahmedabad
+                                   {/* {props.ride?.destination} */}
                                </p>
                            </div>
                            </div>
@@ -46,7 +55,9 @@ function WaitForDriver(props) {
                            <div className='flex items-center gap-5 p-3'>
                            <MdPayments />
                            <div>
-                               <h3 className='text-lg font-medium'>Rs.193.20</h3>
+                               <h3 className='text-lg font-medium'>Rs.193.20
+                               {/* {props.ride?.fare} */}
+                               </h3>
                                <p className='text-sm -mt-1  text-gray-600'>
                                    Cash Cash
                                </p>
