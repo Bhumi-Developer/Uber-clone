@@ -1,18 +1,21 @@
 
 import React, { useState,useRef } from "react";
 import uber_map from "../assets/uber_map.png";
-import { Link } from "react-router-dom";
+import { Link,useLocation } from "react-router-dom";
 import uber_logo from "../assets/uber_logo.png";
 import { FiLogOut } from "react-icons/fi"
 import { MdOutlineKeyboardArrowUp } from "react-icons/md";
 import {useGSAP} from '@gsap/react'
 import gsap from 'gsap'
 import FinishRide from "../components/FinishRide";
+import LiveTracking from "../components/LiveTracking";
 
 function CaptainRiding() {
 
     const [finishRidePanel,setFinishRidePanel] = useState(false)
     const finishRidePanelRef = useRef(null)
+    const location = useLocation()
+    const rideData = location.state?.ride
 
      useGSAP(function(){
     if(finishRidePanel){
@@ -39,7 +42,9 @@ function CaptainRiding() {
         </Link>
       </div>
       <div className="h-4/5">
-        <img className="h-full w-full object-cover" src={uber_map} />
+        <img className="h-full w-full object-cover" src={uber_map} 
+        // <LiveTracking>/>
+         />
       </div>
       <div className="h-1/5 p-6 flex items-center justify-between bg-yellow-400 relative " onClick={()=>{
         setFinishRidePanel(true)
@@ -54,7 +59,9 @@ function CaptainRiding() {
        <button  className="  bg-green-600 text-white font-semibold p-3 px-10 rounded-lg">Complete Ride</button>
 </div>
 <div ref ={finishRidePanelRef} className='fixed w-full z-10 bottom-0 bg-white px-3 py-10 pt-12 translate-y-full'>
-          <FinishRide setFinishRidePanel={setFinishRidePanel}/>
+          <FinishRide
+           ride = {ride}
+          setFinishRidePanel={setFinishRidePanel}/>
       </div>
        
     </div>

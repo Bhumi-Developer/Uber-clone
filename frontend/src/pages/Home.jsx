@@ -12,6 +12,8 @@ import WaitForDriver from '../components/WaitForDriver';
 import axios from 'axios';
 import {SocketContext} from '../context/SocketContext'
 import { UsersDataContext } from '../context/UsersContext';
+import { useNavigate } from 'react-router-dom';
+import LiveTracking from '../components/LiveTracking';
 
 function Home() {
   const [pickup, setPickup] = useState('');
@@ -21,6 +23,7 @@ function Home() {
   const [confirmRidePanel, setConfirmRidePanel] = useState(false);
   const [vehicleFound, setVehicleFound] = useState(false);
   const [waitingForDriver, setWaitingForDriver] = useState(false);
+  const navigate = useNavigate();
 
   const vehicleFoundRef = useRef(null);
   const confirmRidePanelRef = useRef(null);
@@ -47,6 +50,10 @@ function Home() {
     setVehicleFound(false)
     setWaitingForDriver(true)
     setRide(ride)
+  })
+  socket.on('ride-started',ride=>{
+    setWaitingForDriver(false)
+    navigate('/riding',{state: {ride}})
   })
   
 
@@ -188,7 +195,9 @@ function Home() {
     <div className='h-screen relative overflow-hidden'>
       <img className='w-16 absolute left-5 top-5' src={uber_logo} alt="Uber Logo" />
       <div className='h-screen w-screen'>
-        <img className='h-full w-full object-cover' src={uber_map} alt="Map background" />
+        <img className='h-full w-full object-cover' src={uber_map} 
+        // <LiveTracking/>
+        alt="Map background" />
       </div>
 
       <div className='flex flex-col justify-end h-screen absolute top-0 w-full'>
